@@ -1,28 +1,73 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <title>Spotify Charts</title>
-    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-</head>
-<body>
-    <h1>Correlação entre Ano de Lançamento e Presença nas Playlists do Spotify</h1>
-    <div>
-        {{ graph_html | safe }}
-    </div>
-</body>
-</html>
-
-
-<!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Total de Execuções por Artista</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gráficos da base de dados Spotify</title>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #cdcdcd;
+        }
+        .container {
+            width: 90%;
+            margin: auto;
+            overflow: hidden;
+        }
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+            color: #333;
+        }
+        .graph-container {
+            background: #ffffff;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2, h3 {
+            text-align: center;
+            color: #333;
+        }
+        p {
+            text-align: center;
+            font-size: 1.2em;
+            color: #4800ff;
+        }
+    </style>
 </head>
 <body>
-    <h1>Total de Execuções por Artista</h1>
-    <div>
-        {{ graph_html | safe }}
+    <div class="container">
+        <h1>Gráficos Spotify</h1>
+
+        <div class="graph-container">
+            <h2>Correlação entre o ano de lançamento e a presença em playlists</h2>
+            {{ graph_html1 | safe }}
+        </div>
+
+        <div class="graph-container">
+            <h2>Total de execuções por artista - TOP 20</h2>
+            {{ graph_html2 | safe }}
+        </div>
+
+        <div class="graph-container">
+            <h2>Estatística Descritiva</h2>
+            <p>Média de BPM: {{ mean_bpm }}</p>
+        </div>
+
+        <div class="graph-container">
+            <h2>Distribuição do BPM</h2>
+            {{ graph_html3 | safe }}
+        </div>
+
+        <div class="graph-container">
+            <h2>Média de BPM para Músicas com mais de 50M de Execuções</h2>
+            {{ graph_html4 | safe }}
+        </div>
     </div>
 </body>
 </html>
